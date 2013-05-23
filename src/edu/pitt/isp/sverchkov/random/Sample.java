@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author YUS24
  */
-public class Sampling {
+public class Sample {
     
     /**
      * Random sampling of a combination of k objects out of a list.
@@ -17,7 +17,7 @@ public class Sampling {
      * @param random The RNG object.
      * @return A new collection containing k objects from the list.
      */
-    private static <T> Collection<T> sampleCombination( List<T> collection, int k, Random random ){
+    public static <T> Collection<T> combination( List<T> collection, int k, Random random ){
         
         final int n = collection.size();
         
@@ -36,8 +36,8 @@ public class Sampling {
         return result;
     }
     
-    private static <T> Collection<T> sampleCombination( List<T> collection, int k ){
-        return sampleCombination( collection, k, new Random() );
+    public static <T> Collection<T> combination( List<T> collection, int k ){
+        return combination( collection, k, new Random() );
     }
     
 }
