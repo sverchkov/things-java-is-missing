@@ -26,12 +26,12 @@ public class Sample {
         Set<T> result = new HashSet();
         for( int j = n - k; j < n; j++ ){
             
-            final T item = collection.get( random.nextInt( j + 1 ) );
+            final T item = collection.get( random.nextInt( j ) );
             
             if( result.contains( item ) )
-                result.add( item );
-            else
                 result.add( collection.get(j) );
+            else
+                result.add( item );
         }            
         return result;
     }
