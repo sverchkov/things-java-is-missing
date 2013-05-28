@@ -37,21 +37,21 @@ public class Assignments<K,V> implements Iterable<Map<K,V>> {
         this.values = Collections.unmodifiableList(tmp);
     }
 
-    public Assignments( List<K> keys, List<List<V>> values ){
+    public Assignments( List<K> keys, List<? extends List<? extends V>> values ){
 
         this.keys = Collections.unmodifiableList( new ArrayList<>(keys) );
 
         List<List<V>> tmp = new ArrayList<>(values.size());
-        for( List<V> valueList : values )
+        for( List<? extends V> valueList : values )
             tmp.add( Collections.unmodifiableList( new ArrayList<>(valueList)) );
         this.values = Collections.unmodifiableList(tmp);
     }
 
-    public Assignments( Map<K,? extends Collection<V>> setMap ){
+    public Assignments( Map<K,? extends Collection<? extends V>> setMap ){
         keys = new ArrayList<>();
         values = new ArrayList<>();
         
-        for( Map.Entry<K, ? extends Collection<V>> entry : setMap.entrySet() ){
+        for( Map.Entry<K, ? extends Collection<? extends V>> entry : setMap.entrySet() ){
             keys.add( entry.getKey() );
             values.add( Collections.unmodifiableList( new ArrayList<>(entry.getValue()) ) );
         }
