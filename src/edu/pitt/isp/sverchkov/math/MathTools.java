@@ -13,9 +13,15 @@ public class MathTools {
     //TODO public static int sum( int[] array ){        
     //}
     
+    /**
+     * Sums a (presumably finite) iterable of doubles.
+     * @param nums the things to sum
+     * @return the sum as a double
+     * @throws NullPointerException if any element in nums is null.
+     */
     public static double sum( Iterable<Double> nums ){
         double sum = 0;
         for( double num : nums ) sum += num;
         return sum;
-    }
+    }  
 }
