@@ -39,5 +39,5 @@ public class Sample {
     public static <T> Collection<T> combination( List<T> collection, int k ){
         return combination( collection, k, new Random() );
     }
-    
+
 }
