@@ -43,7 +43,7 @@ public class DoubleIterable implements Iterable<Double> {
         public Double next() {
             T next = iterator.next();
             try {
-                return (Double) next.getClass().getMethod( "doubleValue" ).invoke(next );
+                return (Double) ( next.getClass().getMethod( "doubleValue" ).invoke( next ) );
             } catch ( IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException ex) {
                 throw new IllegalArgumentException(ex);
             }
