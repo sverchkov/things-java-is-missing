@@ -19,9 +19,9 @@ public class MathTools {
      * @return the sum as a double
      * @throws NullPointerException if any element in nums is null.
      */
-    public static double sum( Iterable<Double> nums ){
+    public static double sum( Iterable<? extends Number> nums ){
         double sum = 0;
-        for( double num : nums ) sum += num;
+        for( Number num : nums ) sum += num.doubleValue();
         return sum;
     }  
 }
