@@ -46,4 +46,9 @@ public class Pair<First,Second> {
         return hash;
     }
     
+    
+    @Override
+    public String toString(){
+        return "("+first.toString()+", "+second.toString()+")";
+    }
 }
