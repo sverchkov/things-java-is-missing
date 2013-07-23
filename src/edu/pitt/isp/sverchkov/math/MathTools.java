@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class MathTools {
     
-    private static final List<Double> logFactorials = new ArrayList<>();
+    private static final List<Double> logFactorials = new ArrayList<>( Arrays.asList( 0.0, 0.0 ) );
     
     //TODO public static int sum( int[] array ){        
     //}
