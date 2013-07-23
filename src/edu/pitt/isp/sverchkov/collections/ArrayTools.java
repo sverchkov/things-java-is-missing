@@ -42,4 +42,17 @@ public class ArrayTools {
         }
         return -1;
     }
+    
+    public static int[] rectangularDimensions( int[][] array ){
+        final int m = array.length;
+        
+        int n = 0, i=0;
+        do{
+            n = array[i++].length;
+        }while( i < m && n == array[i].length );
+        if( i < m )
+            throw new IllegalArgumentException("Array must be rectangular.");
+
+        return new int[] {n,m};
+    }
 }
