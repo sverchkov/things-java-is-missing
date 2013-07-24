@@ -32,6 +32,17 @@ public class MathTools {
     }
     
     /**
+     * Sums a (varargs) array of <tt>int</tt>s.
+     * @param array of <tt>int</tt>s
+     * @return the sum
+     */
+    public static int sum( int... array ){
+        int sum = 0;
+        for( int n : array ) sum += n;
+        return sum;
+    }
+    
+    /**
      * Memoized ln( n! )
      * @param n
      * @return ln( n! )
