@@ -57,4 +57,21 @@ public class MathTools {
         }
         return logFactorials.get(n);
     }
+    
+    /**
+     * Returns ln( x + y ) given ln x and ln y. More numerically stable than ln( exp( lnX ) + exp( lnY ) ).
+     * @param lnX ln x
+     * @param lnY ln y
+     * @return ln( x + y )
+     */
+    public static double lnXplusY( double lnX, double lnY ){
+        if( Double.isNaN(lnX) || Double.isNaN(lnY) ) return Double.NaN;
+        if( lnX == Double.NEGATIVE_INFINITY ) return lnY;
+        if( lnY == Double.NEGATIVE_INFINITY ) return lnX;
+        if( lnX == Double.POSITIVE_INFINITY || lnY == Double.POSITIVE_INFINITY ) return Double.POSITIVE_INFINITY;
+        // wlog x <= y
+        if( lnX > lnY ) return lnXplusY( lnY, lnX );
+        // ln( x + y ) = ln(x) + ln( 1 + exp( ln(y) - ln(x) ) )
+        return lnX + Math.log1p( Math.exp( lnY - lnX ) );
+    }
 }
