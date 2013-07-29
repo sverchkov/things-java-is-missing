@@ -47,7 +47,7 @@ public class MathTools {
      * @param n
      * @return ln( n! )
      */
-    public static double logFactorial( int n ){
+    public static double lnFactorial( int n ){
         int last = logFactorials.size()-1;
         if( n > last ){
             double lf = logFactorials.get( last );
