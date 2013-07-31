@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author YUS24
  */
-public class Triple<First,Second,Third> {
+public class Triple<First,Second,Third> implements Tuple<First,Pair<Second,Third>> {
     public final First first;
     public final Second second;
     public final Third third;
@@ -66,6 +66,16 @@ public class Triple<First,Second,Third> {
     
     public Pair<Second,Third> secondThird(){
         return new Pair<>( second, third );
+    }
+
+    @Override
+    public First getFirst() {
+        return first;
+    }
+
+    @Override
+    public Pair<Second, Third> getRest() {
+        return secondThird();
     }
     
 }

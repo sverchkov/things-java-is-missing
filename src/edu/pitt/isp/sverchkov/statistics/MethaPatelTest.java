@@ -60,9 +60,9 @@ public class MethaPatelTest {
         bounds = new HashMap<>();
         
         {// Compute normalizing constant
-            double n = -MathTools.logFactorial( MathTools.sum( rows ) ); // 1/T!
+            double n = -MathTools.lnFactorial( MathTools.sum( rows ) ); // 1/T!
             for( int r : rows )
-                n += MathTools.logFactorial( r ); // prod_r( R_r! )
+                n += MathTools.lnFactorial( r ); // prod_r( R_r! )
             normalization = n;
         }
 
@@ -157,9 +157,9 @@ public class MethaPatelTest {
      * @return the edge cost.
      */
     private double edgeCost( State source, State destination ){
-        double cost = MathTools.logFactorial( cols[destination.k] );
+        double cost = MathTools.lnFactorial( cols[destination.k] );
         for( int i=0; i<source.r.length; i++ )
-            cost -= MathTools.logFactorial( source.r[i] - destination.r[i] );
+            cost -= MathTools.lnFactorial( source.r[i] - destination.r[i] );
         return cost;
     }
     
@@ -172,9 +172,9 @@ public class MethaPatelTest {
         int sum = 0;
         for( int i = 0; i < state.k; i++ )
             sum += cols[i];
-        double cost = MathTools.logFactorial( sum );
+        double cost = MathTools.lnFactorial( sum );
         for( int ri : state.r )
-            cost -= MathTools.logFactorial( ri );
+            cost -= MathTools.lnFactorial( ri );
         return cost;
     }
 
@@ -227,9 +227,9 @@ public class MethaPatelTest {
         // the equality comparisons.
         double l = 0;
         for( int c = cols.length-1; c >= 0; c-- ){         
-            double term = MathTools.logFactorial( cols[c] ); // prod_c( C_c! )
+            double term = MathTools.lnFactorial( cols[c] ); // prod_c( C_c! )
             for( int r = 0; r < rows.length; r++ )
-                term -= MathTools.logFactorial( counts[r][c] ); // prod_rc( 1 / x_rc! )
+                term -= MathTools.lnFactorial( counts[r][c] ); // prod_rc( 1 / x_rc! )
             l += term; // Again, DO NOT REARRANGE.
         }
         return l;

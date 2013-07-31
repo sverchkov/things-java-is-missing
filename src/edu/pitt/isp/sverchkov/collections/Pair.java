@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author YUS24
  */
-public class Pair<First,Second> {
+public class Pair<First,Second> implements Tuple<First,Bucket<Second>> {
     
     public final First first;
     public final Second second;
@@ -50,5 +50,15 @@ public class Pair<First,Second> {
     @Override
     public String toString(){
         return "("+first.toString()+", "+second.toString()+")";
+    }
+
+    @Override
+    public First getFirst() {
+        return first;
+    }
+
+    @Override
+    public Bucket<Second> getRest() {
+        return new Bucket<>(second);
     }
 }
