@@ -8,8 +8,8 @@ package edu.pitt.isp.sverchkov.collections;
  *
  * @author YUS24
  */
-class Nothing implements Tuple<Nothing,Nothing> {
-    public static final Nothing nothing = null;
+public class Nothing implements Tuple<Nothing,Nothing> {
+    public static final Nothing nothing = null; // = new Nothing(); // SHOULD this be null or an object? 
     private Nothing(){}
     @Override
     public Nothing getFirst() {
@@ -17,6 +17,6 @@ class Nothing implements Tuple<Nothing,Nothing> {
     }
     @Override
     public Nothing getRest() {
-        return this;
+        return nothing;
     }
 }
