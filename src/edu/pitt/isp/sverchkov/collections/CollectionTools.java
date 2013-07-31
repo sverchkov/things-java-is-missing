@@ -4,10 +4,7 @@
  */
 package edu.pitt.isp.sverchkov.collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
@@ -18,6 +15,13 @@ public class CollectionTools {
         Map<K,V> result = new HashMap<>(m1);
         result.putAll(m2);
         return result;
+    }
+    
+    public static <Key,Value> boolean isSubset( Map<Key,Value> superset, Map<Key,Value> subset ){
+        for( Map.Entry<Key,Value> entry : subset.entrySet() )
+            if( !Objects.equals(entry.getValue(), superset.get(entry.getKey())))
+                return false;
+        return true;
     }
     
     public static <Key,Value> ArrayList<Value> applyMap( Map<? extends Key, ? extends Value> map, Key[] keys ){
