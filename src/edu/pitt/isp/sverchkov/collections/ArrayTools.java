@@ -84,7 +84,7 @@ public class ArrayTools {
         if( i < m )
             throw new IllegalArgumentException("Array must be rectangular.");
 
-        return new int[] {n,m};
+        return new int[] {m,n};
     }
     
     /**
