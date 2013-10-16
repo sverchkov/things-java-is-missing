@@ -1,5 +1,6 @@
 package edu.pitt.isp.sverchkov.random;
 
+import edu.pitt.isp.sverchkov.math.MathTools;
 import java.util.*;
 
 /**
@@ -40,4 +41,36 @@ public class Sample {
         return combination( collection, k, new Random() );
     }
 
+    public static double[] randomUniform( double[] resultArray, final int k, Random random ){
+        if( k < 2 ) return resultArray;
+        if( null == random ) random = new Random();
+        if( resultArray == null || resultArray.length < k )
+            resultArray = new double[k];
+        for( int i=0; i < k-1; i++ )
+            resultArray[i] = random.nextDouble()/k;
+        resultArray[k-1] = 1 - MathTools.sum( resultArray, 0, k-1 );
+        
+        return resultArray;
+    }
+    
+    public static double[] randomUniform( double[] resultArray, final int k ){
+        return randomUniform( resultArray, k, null );
+    }
+    
+    public static double[] randomUniform( double[] resultArray, Random random ){
+        if( null == resultArray ) return null;
+        return randomUniform( resultArray, resultArray.length, random );
+    }
+    
+    public static double[] randomUniform( double[] resultArray ){
+        return randomUniform( resultArray, null );
+    }
+    
+    public static double[] randomUniform( final int k, Random random ){
+        return randomUniform( null, k, random );
+    }
+    
+    public static double[] randomUniform( final int k ){
+        return randomUniform( null, k, null );
+    }
 }
