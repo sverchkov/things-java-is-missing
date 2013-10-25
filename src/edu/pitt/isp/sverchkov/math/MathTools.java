@@ -48,7 +48,7 @@ public class MathTools {
     }
     
     public static double sum( final double[] array, final int firstIndex, final int length ){
-        int sum = 0;
+        double sum = 0;
         for( int i = firstIndex; i < firstIndex+length; i++ )
             sum += array[i];
         return sum;
