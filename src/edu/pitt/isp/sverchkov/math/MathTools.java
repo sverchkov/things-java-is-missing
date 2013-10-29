@@ -90,6 +90,22 @@ public class MathTools {
         // ln( x + y ) = ln(x) + ln( 1 + exp( ln(y) - ln(x) ) )
         return lnX + Math.log1p( Math.exp( lnY - lnX ) );
     }
+
+    /**
+     * Returns ln( x - y ) given ln x and ln y. More numerically stable than ln( exp( lnX ) - exp( lnY ) ).
+     * @param lnX ln x
+     * @param lnY ln y
+     * @return ln( x + y )
+     */
+    public static double lnXminusY(double lnX, double lnY) {
+        if( ! ( lnX >= lnY ) ) return Double.NaN; // This way also catches NaNs in parameters
+        if( lnY == Double.NEGATIVE_INFINITY ) return lnX;
+        if( lnX == Double.POSITIVE_INFINITY ) return lnY == Double.POSITIVE_INFINITY ? Double.NaN : Double.POSITIVE_INFINITY;
+        if( lnX == lnY ) return Double.NEGATIVE_INFINITY;
+        // ln( x - y ) = ln(x) + ln( 1 - exp( ln(y) -  ln(x) ) )
+        return lnX + Math.log1p( -Math.exp( lnY - lnX ) );
+    }
+    
     
     public static double[] arrayOperate( double[] a, MathDoubleOp op, double... b ){
         Objects.requireNonNull( a, "'a' cannot be null." );
@@ -127,7 +143,7 @@ public class MathTools {
             range.add(x);
         return range;
     }
-    
+
     // Classes
     
     private final static class Add implements MathDoubleOp {
